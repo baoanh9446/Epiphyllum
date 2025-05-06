@@ -3,43 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Slideshow  www</title>
+    <title>Random Animation Slideshow</title>
     <style>
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
         }
-        #slideshow {
-            max-width: 600px;
-            margin: auto;
-        }
-        img {
+        .slideshow {
+            position: absolute;
             width: 100%;
-            height: auto;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            max-width: 900px;
+            max-height: 600px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 1s ease-in-out;
+        }
+        /* Animation Effects */
+        .fade {
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+        .slide-up {
+            transform: translateY(100%);
+            animation: slideUp 3s forwards;
+        }
+        .slide-left {
+            transform: translateX(100%);
+            animation: slideLeft 3s forwards;
+        }
+        .zoom-in {
+            transform: scale(0.5);
+            animation: zoomIn 3s forwards;
+        }
+        /* Define keyframe animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideLeft {
+            to {
+                transform: translateX(0);
+            }
+        }
+        @keyframes zoomIn {
+            to {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Image Slideshow</h1>
-    <div id="slideshow">
-        <img id="slideshowImage" src="" alt="Slideshow Image">
+
+    <div class="slideshow">
+        <div class="image-container" id="slideshow-container"></div>
     </div>
 
     <script>
-        const imageUrls = [
-    <img src='https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/1.jpg'>
-    <img src='https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/2.jpg'>
+        // Array of image URLs
+        const imageLinks = [
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/1.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/2.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/3.jpg",
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/4.jpg"
         ];
+
+        const animations = ["fade", "slide-up", "slide-left", "zoom-in"];
         let currentIndex = 0;
 
+        const slideshowContainer = document.getElementById("slideshow-container");
+
+        // Function to change the image with a random animation
         function changeImage() {
-            document.getElementById("slideshowImage").src = imageUrls[currentIndex];
-            currentIndex = (currentIndex + 1) % imageUrls.length;
+            // Clear previous images
+            slideshowContainer.innerHTML = "";
+
+            // Create new image element
+            const img = document.createElement("img");
+            img.src = imageLinks[currentIndex];
+            img.classList.add(getRandomAnimation());
+            slideshowContainer.appendChild(img);
+
+            // Update index to the next image in the array (loop back at the end)
+            currentIndex = (currentIndex + 1) % imageLinks.length;
         }
 
-        // Start slideshow
+        // Function to get a random animation class
+        function getRandomAnimation() {
+            const randomIndex = Math.floor(Math.random() * animations.length);
+            return animations[randomIndex];
+        }
+
+        // Change image every 5 seconds
+        setInterval(changeImage, 5000);
+
+        // Initial image load
         changeImage();
-        setInterval(changeImage, 3000); // Change image every 3 seconds
     </script>
+
 </body>
 </html>
