@@ -1,102 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Slideshow </title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #333;
-            overflow: hidden;
-        }
-        .slideshow-container {
-            position: relative;
-            width: 600px;
-            height: 400px;
-        }
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        .slide-in {
-            animation: slideIn 1s ease-in-out;
-        }
-        .zoom-in {
-            animation: zoomIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-        @keyframes zoomIn {
-            from { transform: scale(0.5); }
-            to { transform: scale(1); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Clickable Moving Box</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #f0f0f0;
+      overflow: hidden;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+    #box {
+      width: 200px;
+      height: 100px;
+      background-color: #3498db;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: top 0.3s ease, left 0.3s ease;
+    }
+  </style>
 </head>
 <body>
 
-<div class="slideshow-container">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/1.jpg" class="slides" alt="Image 1">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/2.jpg" class="slides" alt="Slide 2">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/3.jpg" class="slides" alt="Slide 3">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/4.jpg" class="slides" alt="Slide 4">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/5.jpg" class="slides" alt="Slide 5">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/6.jpg" class="slides" alt="Slide 6">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/7.jpg" class="slides" alt="Slide 7">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/8.jpg" class="slides" alt="Slide 8">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/9.jpg" class="slides" alt="Slide 9">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/10.jpg" class="slides" alt="Slide 10">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/11.jpg" class="slides" alt="Slide 11">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/12.jpg" class="slides" alt="Slide 12">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/13.jpg" class="slides" alt="Slide 13">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/14.jpg" class="slides" alt="Slide 14">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/15.jpg" class="slides" alt="Slide 15">
-        <img src="https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/16.jpg" class="slides" alt="Slide 16">
-</div>
+<div id="box">Click me!</div>
 
 <script>
-    const slides = document.querySelectorAll(".slide");
-    const animations = ["fade-in", "slide-in", "zoom-in"];
-    let currentIndex = 0;
+  const box = document.getElementById('box');
+  const messages = [
+    "Hello there!",
+    "Keep going!",
+    "You're doing great!",
+    "Click again!",
+    "What's next?",
+    "Try one more time!",
+    "Surprise!",
+    "Another move!",
+    "Box on the run!",
+    "Still here!"
+  ];
 
-    function showSlide(index) {
-    slides.forEach((slide) => {
-        slide.style.opacity = "0";
-        slide.classList.remove(...animations);
-    });
+  function moveBox() {
+    const maxX = window.innerWidth - box.offsetWidth;
+    const maxY = window.innerHeight - box.offsetHeight;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-    let randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-    
-    // Force reflow to restart animation
-    slides[index].offsetWidth;
+    box.style.left = `${randomX}px`;
+    box.style.top = `${randomY}px`;
+    box.textContent = randomMessage;
+  }
 
-    slides[index].style.opacity = "1";
-    slides[index].classList.add(randomAnimation);
-}
-
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        showSlide(currentIndex);
-    }
-
-    showSlide(currentIndex);
-    setInterval(nextSlide, 3000);
+  box.addEventListener('click', moveBox);
 </script>
 
 </body>
