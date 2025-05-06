@@ -50,6 +50,69 @@
             transform: scale(0.5);
             animation: zoomIn 3s forwards;
         }
+        .rotate {
+            transform: rotate(180deg);
+            animation: rotateAnim 3s forwards;
+        }
+        .bounce {
+            transform: translateY(0);
+            animation: bounceAnim 1.5s ease infinite;
+        }
+        .flip {
+            transform: rotateY(180deg);
+            animation: flipAnim 3s forwards;
+        }
+        .pulse {
+            animation: pulseAnim 1.5s ease infinite;
+        }
+        .skew {
+            transform: skewX(30deg);
+            animation: skewAnim 3s forwards;
+        }
+        .flip-in {
+            transform: rotateY(-180deg);
+            animation: flipInAnim 3s forwards;
+        }
+        .zoom-out {
+            transform: scale(1.5);
+            animation: zoomOut 3s forwards;
+        }
+        .roll-in {
+            transform: rotateY(90deg);
+            animation: rollIn 3s forwards;
+        }
+        /* New animations */
+        .zoom-in-up {
+            transform: scale(0.5) translateY(100%);
+            animation: zoomInUp 3s forwards;
+        }
+        .zoom-in-down {
+            transform: scale(0.5) translateY(-100%);
+            animation: zoomInDown 3s forwards;
+        }
+        .shake {
+            animation: shakeAnim 0.5s ease-in-out 3 forwards;
+        }
+        .rotate-in {
+            transform: rotateX(180deg);
+            animation: rotateInAnim 3s forwards;
+        }
+        .flip-in-x {
+            transform: rotateX(-180deg);
+            animation: flipInX 3s forwards;
+        }
+        .flip-in-y {
+            transform: rotateY(-180deg);
+            animation: flipInY 3s forwards;
+        }
+        .bounce-in {
+            transform: translateY(100%);
+            animation: bounceIn 2s forwards;
+        }
+        .light-speed-in {
+            transform: translateX(-100%);
+            animation: lightSpeedIn 3s forwards;
+        }
         /* Define keyframe animations */
         @keyframes fadeIn {
             to {
@@ -71,6 +134,101 @@
                 transform: scale(1);
             }
         }
+        @keyframes rotateAnim {
+            to {
+                transform: rotate(0deg);
+            }
+        }
+        @keyframes bounceAnim {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+        @keyframes flipAnim {
+            to {
+                transform: rotateY(0deg);
+            }
+        }
+        @keyframes pulseAnim {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        @keyframes skewAnim {
+            to {
+                transform: skewX(0);
+            }
+        }
+        @keyframes flipInAnim {
+            to {
+                transform: rotateY(0deg);
+            }
+        }
+        @keyframes zoomOut {
+            to {
+                transform: scale(1);
+            }
+        }
+        @keyframes rollIn {
+            to {
+                transform: rotateY(0deg);
+            }
+        }
+        @keyframes zoomInUp {
+            to {
+                transform: scale(1) translateY(0);
+            }
+        }
+        @keyframes zoomInDown {
+            to {
+                transform: scale(1) translateY(0);
+            }
+        }
+        @keyframes shakeAnim {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+        }
+        @keyframes rotateInAnim {
+            to {
+                transform: rotateX(0);
+            }
+        }
+        @keyframes flipInX {
+            to {
+                transform: rotateX(0);
+            }
+        }
+        @keyframes flipInY {
+            to {
+                transform: rotateY(0);
+            }
+        }
+        @keyframes bounceIn {
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes lightSpeedIn {
+            to {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -84,34 +242,47 @@
         const imageLinks = [
             "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/1.jpg", 
             "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/2.jpg", 
-            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/3.jpg",
-            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/4.jpg"
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/3.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/4.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/5.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/6.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/7.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/8.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/9.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/10.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/11.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/12.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/13.jpg",
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/14.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/15.jpg", 
+            "https://raw.githubusercontent.com/baoanh9446/Epiphyllum/refs/heads/main/Qu%E1%BB%B3nh/Qu%E1%BB%B3nh/16.jpg", 
         ];
 
-        const animations = ["fade", "slide-up", "slide-left", "zoom-in"];
-        let currentIndex = 0;
-
-        const slideshowContainer = document.getElementById("slideshow-container");
+        // Array of animation classes
+        const animations = [
+            "fade", "slide-up", "slide-left", "zoom-in", 
+            "rotate", "bounce", "flip", "pulse", "skew", 
+            "flip-in", "zoom-out", "roll-in", "zoom-in-up", 
+            "zoom-in-down", "shake", "rotate-in", "flip-in-x", 
+            "flip-in-y", "bounce-in", "light-speed-in"
+        ];
 
         // Function to change the image with a random animation
         function changeImage() {
-            // Clear previous images
+            const slideshowContainer = document.getElementById("slideshow-container");
+
+            // Clear the current image
             slideshowContainer.innerHTML = "";
 
-            // Create new image element
+            // Randomly select an image and animation
+            const randomImage = imageLinks[Math.floor(Math.random() * imageLinks.length)];
+            const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+
+            // Create the new image element with random animation
             const img = document.createElement("img");
-            img.src = imageLinks[currentIndex];
-            img.classList.add(getRandomAnimation());
+            img.src = randomImage;
+            img.classList.add(randomAnimation);
             slideshowContainer.appendChild(img);
-
-            // Update index to the next image in the array (loop back at the end)
-            currentIndex = (currentIndex + 1) % imageLinks.length;
-        }
-
-        // Function to get a random animation class
-        function getRandomAnimation() {
-            const randomIndex = Math.floor(Math.random() * animations.length);
-            return animations[randomIndex];
         }
 
         // Change image every 5 seconds
