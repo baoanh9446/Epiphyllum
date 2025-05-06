@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Box</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            transition: top 0.2s, left 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+
+    <script>
+        const box = document.getElementById('box');
+
+        box.addEventListener('mouseenter', () => {
+            const maxX = window.innerWidth - box.clientWidth;
+            const maxY = window.innerHeight - box.clientHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            box.style.left = `${randomX}px`;
+            box.style.top = `${randomY}px`;
+        });
+    </script>
+</body>
+</html>
