@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: white;
+    text-align: center;
+}
+
+.slideshow-container {
+    width: 60%;
+    margin: auto;
+    position: relative;
+}
+
+.slide {
+    display: none;
+    animation-duration: 2s;
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Animations */
+.fade { animation: fadeEffect 2s; }
+.zoom { animation: zoomEffect 2s; }
+.rotate { animation: rotateEffect 2s; }
+.flip { animation: flipEffect 2s; }
+
+@keyframes fadeEffect {
+    from {opacity: 0;} to {opacity: 1;}
+}
+@keyframes zoomEffect {
+    from {transform: scale(0.8);} to {transform: scale(1);}
+}
+@keyframes rotateEffect {
+    from {transform: rotateY(90deg);} to {transform: rotateY(0deg);}
+}
+@keyframes flipEffect {
+    from {transform: rotateX(90deg);} to {transform: rotateX(0deg);}
+}
