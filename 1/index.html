@@ -43,21 +43,31 @@
     "What's next?",
     "Try one more time!",
     "Surprise!",
-    "Another move!",
-    "Box on the run!",
-    "Still here!"
+    "Almost done!",
+    "One last click!",
+    "Final move!"
   ];
 
-  function moveBox() {
-    const maxX = window.innerWidth - box.offsetWidth;
-    const maxY = window.innerHeight - box.offsetHeight;
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+  let clickCount = 0;
+  const redirectUrl = "https://example.com"; // Change this to your desired URL
 
-    box.style.left = `${randomX}px`;
-    box.style.top = `${randomY}px`;
-    box.textContent = randomMessage;
+  function moveBox() {
+    if (clickCount < messages.length - 1) {
+      const maxX = window.innerWidth - box.offsetWidth;
+      const maxY = window.innerHeight - box.offsetHeight;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      box.style.left = `${randomX}px`;
+      box.style.top = `${randomY}px`;
+      box.textContent = messages[clickCount];
+      clickCount++;
+    } else {
+      // Final message, then redirect
+      box.textContent = "Redirecting...";
+      setTimeout(() => {
+        window.location.href = redirectUrl;
+      }, 1000);
+    }
   }
 
   box.addEventListener('click', moveBox);
