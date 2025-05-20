@@ -8,7 +8,7 @@ const nameImageMap = {
 };
 
 const flowerCounts = {
-  N: 0,
+  N: 1,
   DA: 0,
   HA: 0,
   K: 0,
