@@ -8,12 +8,12 @@ const nameImageMap = {
 };
 
 const flowerCounts = {
-  N: 1,
-  DA: 0,
-  HA: 0,
-  K: 0,
+  N: 0,
+  DA: 2,
+  HA: 2,
+  K: 3,
   NT: 0,
-  P: 0
+  P: 2
 };
 
 const flowerColors = ['#FF69B4', '#FFD700', '#ADFF2F', '#00CED1', '#9370DB'];
